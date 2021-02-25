@@ -9,7 +9,7 @@ import { Suspense } from 'react'
 
 const Home: BlitzPage = () => {
   return (
-    <div className="container">
+    <div id="container">
       <main>
         <div className="logo">
           <img
@@ -79,7 +79,7 @@ const Home: BlitzPage = () => {
           -moz-osx-font-smoothing: grayscale;
           box-sizing: border-box;
         }
-        .container {
+        #container {
           min-height: 100vh;
           display: flex;
           flex-direction: column;

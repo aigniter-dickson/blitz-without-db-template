@@ -1,5 +1,6 @@
 import { AppProps, ErrorComponent, useRouter } from 'blitz'
 import { ErrorBoundary, FallbackProps } from 'react-error-boundary'
+import 'app/core/styles/index.css'
 // import { queryCache } from 'react-query'
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -32,11 +33,11 @@ function RootErrorFallback({ error }: FallbackProps) {
   //     />
   //   )
   // } else {
-    return (
-      <ErrorComponent
-        statusCode={(error as any)?.statusCode || 400}
-        title={error?.message || error?.name}
-      />
-    )
+  return (
+    <ErrorComponent
+      statusCode={(error as any)?.statusCode || 400}
+      title={error?.message || error?.name}
+    />
+  )
   // }
 }
