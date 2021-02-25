@@ -1,13 +1,14 @@
-import type { BlitzPage } from 'blitz'
-import Layout from 'app/layouts/Layout'
+// # Components
 import { Suspense } from 'react'
+import Layout from 'app/layouts/Layout'
+import { Heading, Stack } from '@chakra-ui/react'
 
 /*
  * This file is just for a pleasant getting started page for your new app.
  * You can delete everything in here and start from scratch if you like.
  */
 
-const Home: BlitzPage = () => {
+const Home: import('blitz').BlitzPage = () => {
   return (
     <div className="container">
       <main>
@@ -21,9 +22,14 @@ const Home: BlitzPage = () => {
           <strong>Congrats!</strong> Your app is ready.
         </p>
         <Suspense fallback="Loading...">
-          {
-            //
-          }
+          <Stack spacing={6}>
+            <Heading as="h1" size="4xl" isTruncated>
+              (4xl) In love with React & Next
+            </Heading>
+            <Heading as="h2" size="3xl" isTruncated>
+              (3xl) In love with React & Next
+            </Heading>
+          </Stack>
         </Suspense>
         <div className="buttons" style={{ marginTop: '5rem' }}>
           <a
