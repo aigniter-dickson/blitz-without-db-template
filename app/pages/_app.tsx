@@ -1,6 +1,10 @@
 import { AppProps, ErrorComponent, useRouter } from 'blitz'
-import { ErrorBoundary, FallbackProps } from 'react-error-boundary'
 // import { queryCache } from 'react-query'
+
+// # Components
+import { ErrorBoundary } from 'react-error-boundary'
+import { ChakraProvider } from '@chakra-ui/react'
+import theme from '@chakra-ui/theme'
 
 export default function App({ Component, pageProps }: AppProps) {
   const getLayout = Component.getLayout || ((page) => page)
@@ -16,12 +20,16 @@ export default function App({ Component, pageProps }: AppProps) {
       //   queryCache.resetErrorBoundaries()
       // }}
     >
-      {getLayout(<Component {...pageProps} />)}
+      {getLayout(
+        <ChakraProvider theme={theme}>
+          <Component {...pageProps} />
+        </ChakraProvider>,
+      )}
     </ErrorBoundary>
   )
 }
 
-function RootErrorFallback({ error }: FallbackProps) {
+function RootErrorFallback({ error }: import('react-error-boundary').FallbackProps) {
   // if (error?.name === 'AuthenticationError') {
   //   return <LoginForm onSuccess={resetErrorBoundary} />
   // } else if (error?.name === 'AuthorizationError') {
@@ -32,11 +40,11 @@ function RootErrorFallback({ error }: FallbackProps) {
   //     />
   //   )
   // } else {
-    return (
-      <ErrorComponent
-        statusCode={(error as any)?.statusCode || 400}
-        title={error?.message || error?.name}
-      />
-    )
+  return (
+    <ErrorComponent
+      statusCode={(error as any)?.statusCode || 400}
+      title={error?.message || error?.name}
+    />
+  )
   // }
 }
