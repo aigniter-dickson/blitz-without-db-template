@@ -1,6 +1,8 @@
 import { AppProps, ErrorComponent, useRouter } from 'blitz'
 import { ErrorBoundary, FallbackProps } from 'react-error-boundary'
-import 'app/core/styles/index.css'
+import 'app/core/styles/app-base.css'
+import 'app/core/styles/app-components.css'
+import 'app/core/styles/app-utilities.css'
 // import { queryCache } from 'react-query'
 
 export default function App({ Component, pageProps }: AppProps) {
